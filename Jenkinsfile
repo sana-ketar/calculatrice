@@ -9,8 +9,7 @@ pipeline {
         stage('Test'){
             steps {
                 script {
-                    def fileExists = sh(script: 'test -f "index.html"', returnStatus: true) == 0
-
+                    def fileExists = fileExists('index.html')
                     if (fileExists) {
                         echo 'Le fichier index.html existe.'
                     } else {
