@@ -4,8 +4,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Démarrage du build...'
-                bat 'node hello.js'
             }
         }
+        stage('Test'){
+            steps {
+                script {
+                    def fileExists = sh(script: 'test -f "index.html"', returnStatus: true) == 0
+
+                    if (fileExists) {
+                        echo 'Le fichier index.html existe.'
+                    } else {
+                        error 'Le fichier index.html n\'existe pas !'
+                    }
+                }
+            }
     }
 }
