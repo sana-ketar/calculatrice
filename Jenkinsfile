@@ -14,9 +14,10 @@ pipeline {
                     if (fileExists) {
                         echo 'Le fichier index.html existe.'
                     } else {
-                        error 'Le fichier index.html n\'existe pas !'
+                        error ('Le fichier index.html n\'existe pas !')
                     }
                 }
             }
+        }
     }
 }
